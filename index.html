@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sara's Birds & Exotic Animal Hospital | Thumboly, Alappuzha</title>
+<meta name="description" content="Specialty care for birds and exotic animals in Thumboly, Alappuzha, Kerala. Led by Dr. Rani Maria Thomas. Open 7 days.">
+<meta property="og:title" content="Sara's Birds & Exotic Animal Hospital">
+<meta property="og:description" content="Specialty care for birds and exotic animals in Alappuzha.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="images/hero-macaw.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231B4332'/%3E%3Cpath d='M44 14c-14 0-24 10-24 24 0 4 1 8 3 11l6-8c-1-8 4-14 15-27z' fill='%2395D5B2'/%3E%3Ccircle cx='38' cy='24' r='3' fill='%23F4B942'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --forest:#1B4332; --canopy:#2D6A4F; --fern:#40916C; --sage:#95D5B2; --mist:#D8F3DC;
+  --bark:#5C4033; --cream:#FAF6EE; --macaw:#E76F51; --macaw-dark:#C2410C; --parrot:#F4B942;
+  --radius:18px; --shadow:0 6px 20px rgba(27,67,50,.18);
+  --nav-h:64px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:Inter,system-ui,sans-serif; color:var(--forest); background:var(--cream);
+  display:flex; flex-direction:column; height:100dvh; overflow:hidden; line-height:1.5;
+}
+h1,h2,h3{font-family:Fraunces,Georgia,serif; line-height:1.15}
+a{color:inherit}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+:focus-visible{outline:3px solid var(--parrot);outline-offset:2px}
+
+/* ---------- Header + tab navigation ---------- */
+header{
+  background:linear-gradient(135deg,var(--forest),var(--canopy));
+  color:var(--cream); display:flex; align-items:center; justify-content:space-between;
+  gap:16px; padding:10px 24px; box-shadow:0 2px 12px rgba(0,0,0,.25); z-index:20;
+}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand .logo{font-size:1.8rem}
+.brand strong{font-family:Fraunces,serif;font-size:1.15rem;display:block}
+.brand small{font-size:.72rem;color:var(--sage);letter-spacing:.06em;text-transform:uppercase}
+nav[role=tablist]{display:flex;gap:4px}
+nav .tab{
+  display:flex;align-items:center;gap:6px;padding:9px 14px;border-radius:999px;
+  color:var(--mist);font-weight:500;font-size:.92rem;transition:background .2s,color .2s;
+}
+nav .tab:hover{background:rgba(255,255,255,.12)}
+nav .tab[aria-selected=true]{background:var(--parrot);color:var(--forest);font-weight:600}
+nav .ico{font-size:1.05rem}
+
+/* ---------- Panels ---------- */
+main{flex:1;position:relative;overflow:hidden;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cpath d='M20 100c0-30 20-60 60-80-4 36-20 66-60 80z' fill='%232D6A4F' fill-opacity='.07'/%3E%3C/svg%3E"),
+    linear-gradient(160deg,var(--mist) 0%,var(--cream) 55%,#EAF7EC 100%);
+}
+.panel{position:absolute;inset:0;overflow:auto;padding:22px 28px;display:none}
+.panel.active{display:block;animation:fadeIn .35s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.panel.active{animation:none}*{transition:none!important}}
+.panel > .inner{max-width:1080px;margin:0 auto}
+.panel h2{font-size:1.7rem;margin-bottom:6px}
+.lead{color:var(--canopy);margin-bottom:16px}
+
+/* ---------- Buttons / cards ---------- */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;
+  font-weight:600;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.btn-primary{background:var(--macaw-dark);color:#fff}
+.btn-ghost{background:rgba(255,255,255,.14);color:#fff;border:2px solid rgba(255,255,255,.6)}
+.btn-green{background:var(--canopy);color:#fff}
+.card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:16px}
+
+/* ---------- Home ---------- */
+.hero{
+  position:relative;border-radius:var(--radius);overflow:hidden;color:#fff;
+  min-height:300px;display:flex;align-items:flex-end;box-shadow:var(--shadow);
+  background:linear-gradient(135deg,var(--forest),var(--fern));
+}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.75}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(27,67,50,.92) 8%,rgba(27,67,50,.15) 70%)}
+.hero-copy{position:relative;z-index:2;padding:22px 26px;max-width:640px}
+.hero h1{font-size:clamp(1.6rem,3.6vw,2.5rem);margin-bottom:6px}
+.hero p{color:var(--mist);margin-bottom:14px}
+.hero .actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.badge{display:inline-block;padding:4px 12px;border-radius:999px;font-size:.8rem;font-weight:600;margin-bottom:10px}
+.badge.open{background:var(--sage);color:var(--forest)}
+.badge.closed{background:#F8D0C4;color:#7A1F0A}
+.what{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:16px 0 10px}
+.what .card{text-align:center;padding:14px 8px;border-top:4px solid var(--fern);cursor:pointer;border-left:0;border-right:0;border-bottom:0;font:inherit}
+.what .card:hover{transform:translateY(-3px)}
+.what .e{font-size:1.9rem;display:block;margin-bottom:4px}
+.what .t{font-weight:600;font-size:.88rem;line-height:1.25}
+.trust{background:var(--forest);color:var(--mist);border-radius:999px;padding:8px 18px;text-align:center;font-size:.85rem}
+
+/* ---------- Services ---------- */
+.split{display:grid;grid-template-columns:260px 1fr;gap:16px}
+.subtabs{display:flex;flex-direction:column;gap:6px}
+.subtab{text-align:left;padding:12px 14px;border-radius:12px;background:#fff;font-weight:500;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.subtab[aria-selected=true]{background:var(--canopy);color:#fff}
+.detail{display:flex;gap:18px;align-items:center;min-height:240px}
+.detail .big{font-size:4rem}
+.note{margin-top:14px;padding:10px 14px;border-left:4px solid var(--parrot);background:#FFF8E6;border-radius:8px;font-size:.9rem}
+
+/* ---------- Patients + gallery grids ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
+.pcard{padding:0;overflow:hidden}
+.pcard img,.gitem img{width:100%;height:130px;object-fit:cover;display:block;background:var(--sage)}
+.pcard div{padding:10px 12px}
+.pcard strong{display:block}
+.pcard span{font-size:.82rem;color:var(--canopy)}
+
+/* ---------- Doctor ---------- */
+.doc{display:grid;grid-template-columns:260px 1fr;gap:20px;align-items:start}
+.doc img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow);background:var(--sage)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.cols .card h3{font-size:1.05rem;margin-bottom:6px}
+
+/* ---------- Gallery ---------- */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.chip{padding:7px 16px;border-radius:999px;background:#fff;font-weight:500;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.chip[aria-pressed=true]{background:var(--forest);color:#fff}
+.gitem{padding:0;overflow:hidden;cursor:zoom-in}
+.pager{display:flex;gap:12px;align-items:center;justify-content:center;margin-top:12px}
+.pager button{padding:8px 16px;border-radius:999px;background:var(--canopy);color:#fff;font-weight:600}
+.pager button:disabled{opacity:.4;cursor:default}
+.credit{font-size:.8rem;color:var(--bark);text-align:center;margin-top:8px}
+.lightbox{position:fixed;inset:0;background:rgba(10,30,20,.92);display:none;align-items:center;justify-content:center;z-index:50;padding:20px}
+.lightbox.on{display:flex}
+.lightbox img{max-width:100%;max-height:85vh;border-radius:12px}
+.lightbox button{position:absolute;top:16px;right:20px;color:#fff;font-size:2rem}
+
+/* ---------- Contact ---------- */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.contact h3{margin-bottom:8px}
+.contact .row{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+table{width:100%;border-collapse:collapse;font-size:.92rem;margin-top:8px}
+td{padding:6px 8px;border-bottom:1px solid var(--mist)}
+tr.today{background:var(--mist);font-weight:600}
+iframe{width:100%;height:100%;min-height:320px;border:0;border-radius:var(--radius);box-shadow:var(--shadow)}
+
+/* ---------- Mobile: bottom tab bar ---------- */
+@media (max-width:820px){
+  header{padding:10px 16px}
+  nav[role=tablist]{
+    position:fixed;left:0;right:0;bottom:0;height:var(--nav-h);z-index:30;gap:0;
+    background:var(--forest);justify-content:space-around;padding:4px;
+    padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -2px 12px rgba(0,0,0,.3);
+  }
+  nav .tab{flex-direction:column;gap:0;font-size:.62rem;padding:6px 4px;border-radius:12px;flex:1;text-align:center}
+  nav .ico{font-size:1.25rem}
+  .panel{padding:16px 14px calc(var(--nav-h) + 20px)}
+  .what{grid-template-columns:repeat(2,1fr)}
+  .what .card:last-child{grid-column:span 2}
+  .split,.doc,.cols,.contact{grid-template-columns:1fr}
+  .subtabs{flex-direction:row;overflow-x:auto}
+  .subtab{white-space:nowrap}
+  .hero{min-height:260px}
+  .doc img{max-width:200px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="brand" href="#home">
+    <span class="logo" aria-hidden="true">🦜</span>
+    <span><strong>Sara's Birds & Exotic Animal Hospital</strong><small>Thumboly · Alappuzha · Kerala</small></span>
+  </a>
+  <nav role="tablist" aria-label="Site sections" id="tabs"></nav>
+</header>
+
+<main id="main">
+
+  <!-- HOME -->
+  <section class="panel" id="panel-home" role="tabpanel" aria-labelledby="tab-home">
+    <div class="inner">
+      <div class="hero">
+        <img src="images/hero-macaw.jpg" alt="A colourful macaw" loading="eager" onerror="this.style.display='none'">
+        <div class="hero-copy">
+          <span id="openBadge" class="badge closed">Checking hours…</span>
+          <h1>Specialty care for birds and exotic animals in Alappuzha</h1>
+          <p>Avian and exotic medicine, ICU care and everyday veterinary services under one roof.</p>
+          <div class="actions">
+            <a class="btn btn-primary" id="callBtn" href="#">📞 Call Now</a>
+            <a class="btn btn-ghost" href="#contact">📍 Visit Us</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cards are generated from CONFIG.services; clicking one opens that service -->
+      <div class="what" id="whatCards"></div>
+      <div class="trust">Established 2021 &nbsp;|&nbsp; Led by Dr. Rani Maria Thomas &nbsp;|&nbsp; Open 7 days</div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="panel" id="panel-services" role="tabpanel" aria-labelledby="tab-services">
+    <div class="inner">
+      <h2>Our Services</h2>
+      <p class="lead">Choose a service to learn more.</p>
+      <div class="split">
+        <div class="subtabs" role="tablist" aria-label="Services" id="subtabs"></div>
+        <div class="card detail" id="serviceDetail" role="tabpanel"></div>
+      </div>
+      <p class="note">For emergencies, call us before you travel.</p>
+      <!-- confirm with clinic: endoscopy, X-ray, operation theatre, boarding, pet spa
+           (reported in press, not on the clinic's own service list). Not shown on the site. -->
+    </div>
+  </section>
+
+  <!-- PATIENTS -->
+  <section class="panel" id="panel-patients" role="tabpanel" aria-labelledby="tab-patients">
+    <div class="inner">
+      <h2>Our Patients</h2>
+      <p class="lead">From parrots to pets, we care for many kinds of animals.</p>
+      <div class="grid" id="patientGrid"></div>
+    </div>
+  </section>
+
+  <!-- DOCTOR -->
+  <section class="panel" id="panel-doctor" role="tabpanel" aria-labelledby="tab-doctor">
+    <div class="inner">
+      <div class="doc">
+        <img src="images/dr-rani.jpg" alt="Dr. Rani Maria Thomas" loading="lazy" onerror="this.src=CONFIG.ph('Dr. Rani',150)">
+        <div>
+          <h2>Dr. Rani Maria Thomas</h2>
+          <p class="lead">Avian and exotic animal veterinarian</p>
+          <p>Dr. Rani grew up among birds. She trained at the Abu Dhabi and Dubai Falcon Hospitals and worked at a bird hospital in Mumbai before opening this hospital in 2021.</p>
+          <div class="cols">
+            <div class="card"><h3>📖 Our Story</h3><p>Started in 2021 as a dedicated hospital for birds and exotic animals, in a facility of roughly 2,000 sq ft in Thumboly, Alappuzha.</p></div>
+            <div class="card"><h3>🔭 Coming Soon</h3><p>A CT scan and laser treatment facility for birds is planned.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="panel" id="panel-gallery" role="tabpanel" aria-labelledby="tab-gallery">
+    <div class="inner">
+      <h2>Gallery</h2>
+      <!-- TODO: Save photos from the hospital's Facebook and Instagram pages into /images/
+           using the filenames in CONFIG.gallery (e.g. birds-01.jpg). Until then,
+           placeholders are shown automatically. -->
+      <div class="filters" id="filters" role="group" aria-label="Gallery filters"></div>
+      <div class="grid" id="galleryGrid"></div>
+      <div class="pager">
+        <button id="prevPg">‹ Prev</button><span id="pgInfo"></span><button id="nextPg">Next ›</button>
+      </div>
+      <div class="filters" style="justify-content:center;margin-top:10px">
+        <a class="btn btn-green" id="fbLink" href="#" target="_blank" rel="noopener">Facebook</a>
+        <a class="btn btn-green" id="igLink" href="#" target="_blank" rel="noopener">Instagram</a>
+      </div>
+      <p class="credit">Photos courtesy of Sara's Birds &amp; Exotic Animal Hospital</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="panel" id="panel-contact" role="tabpanel" aria-labelledby="tab-contact">
+    <div class="inner contact">
+      <div class="card">
+        <h3>Visit &amp; Contact</h3>
+        <p id="addr"></p>
+        <div class="row" id="contactBtns"></div>
+        <table id="hoursTable" aria-label="Opening hours"></table>
+      </div>
+      <div><iframe id="map" title="Map showing the hospital location" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    </div>
+  </section>
+
+</main>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-label="Photo viewer">
+  <button id="lbClose" aria-label="Close">×</button>
+  <img id="lbImg" alt="">
+</div>
+
+<script>
+/* =====================================================================
+   CONFIG: all editable content lives here
+   ===================================================================== */
+const CONFIG = {
+  name: "Sara's Birds & Exotic Animal Hospital",
+  address: "Opposite Peninsular Honda, Near Matha School, Thumboly, Alappuzha, Kerala - 688008",
+  phones: ["+91 92071 42147", "+91 87329 85563"],
+  whatsapp: "919207142147",               // TODO: confirm this number is on WhatsApp
+  facebook: "#",                          // TODO: add Facebook page URL
+  instagram: "#",                         // TODO: add Instagram page URL
+  timezone: "Asia/Kolkata",
+  // 0 = Sunday ... 6 = Saturday; [open, close] in 24h "HH:MM"
+  hours: {
+    0:["10:00","17:00"], 1:["10:00","19:00"], 2:["10:00","19:00"], 3:["10:00","19:00"],
+    4:["10:00","19:30"], 5:["10:00","19:00"], 6:["10:00","19:00"]
+  },
+  tabs: [
+    {id:"home", label:"Home", icon:"🏡"}, {id:"services", label:"Services", icon:"🩺"},
+    {id:"patients", label:"Patients", icon:"🦜"}, {id:"doctor", label:"Doctor", icon:"👩‍⚕️"},
+    {id:"gallery", label:"Gallery", icon:"📷"}, {id:"contact", label:"Visit", icon:"📍"}
+  ],
+  services: [
+    {short:"Avian & Exotic Medicine", icon:"🦜", title:"Avian & Exotic Animal Care",
+     text:"Specialized medical care for birds and exotic animals. Our team understands the needs of species that most clinics don't see."},
+    {short:"General Veterinary Care & Diagnostics", icon:"🩺", title:"General Veterinary Care & Diagnostics",
+     text:"General veterinary treatments and diagnostics for your pets, from check-ups to investigating illness."},
+    {short:"Incubator ICU", icon:"🏥", title:"Pet Incubator ICU",
+     text:"Incubator ICU units provide a controlled, supportive environment for animals that need close monitoring."},
+    {short:"Blood Collection & Transfusion", icon:"🩸", title:"Blood Collection & Transfusion",
+     text:"Blood collection and transfusion services to support animals in need of urgent care."},
+    {short:"Grooming & Anti-Tick Care", icon:"🛁", title:"Grooming & Anti-Tick Management",
+     text:"Pet grooming along with anti-tick management to keep your companion clean, comfortable and protected."}
+  ],
+  patients: [
+    ["Macaws","Bold, colourful and clever"],["Cockatoos","Crested and affectionate"],
+    ["Conures","Small, lively parrots"],["Hornbills","Striking large-billed birds"],
+    ["Flamingoes","Graceful wading birds"],["Vultures","Important wildlife patients"],
+    ["Iguanas","Reptile and exotic care"],["Dogs","Everyday companions"],["Cats","Cherished family pets"]
+  ],
+  gallery: (() => {
+    const cats = {Birds:"birds", Exotics:"exotics", Hospital:"hospital", Grooming:"grooming"};
+    const out = [];
+    for (const [label,key] of Object.entries(cats))
+      for (let i=1;i<=6;i++) out.push({cat:label, file:`${key}-0${i}.jpg`, alt:`${label} photo ${i}`});
+    return out;
+  })(),
+  // Placeholder image (inline SVG) used when a real photo isn't in /images/ yet
+  ph(label, hue=150){
+    const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300'>
+      <defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
+      <stop offset='0' stop-color='hsl(${hue},45%,28%)'/><stop offset='1' stop-color='hsl(${hue},45%,50%)'/></linearGradient></defs>
+      <rect width='400' height='300' fill='url(#g)'/>
+      <text x='200' y='150' font-size='22' font-family='sans-serif' fill='white' text-anchor='middle'>${label}</text></svg>`;
+    return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+  }
+};
+
+/* =====================================================================
+   Helpers
+   ===================================================================== */
+const $ = (s, r=document) => r.querySelector(s);
+const DAYS = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+const fmt = t => { let [h,m]=t.split(":").map(Number); const ap=h>=12?"PM":"AM"; h=h%12||12; return `${h}:${String(m).padStart(2,"0")} ${ap}`; };
+const tel = p => "tel:" + p.replace(/\s/g,"");
+function img(src, alt, label, hue){
+  const i = document.createElement("img");
+  i.src = src; i.alt = alt; i.loading = "lazy";
+  i.onerror = () => { i.onerror = null; i.src = CONFIG.ph(label, hue); };
+  return i;
+}
+
+/* =====================================================================
+   Tabs + hash routing
+   ===================================================================== */
+const tabsEl = $("#tabs");
+CONFIG.tabs.forEach(t => {
+  const b = document.createElement("button");
+  b.className = "tab"; b.id = "tab-" + t.id; b.role = "tab";
+  b.setAttribute("aria-controls", "panel-" + t.id);
+  b.innerHTML = `<span class="ico" aria-hidden="true">${t.icon}</span><span>${t.label}</span>`;
+  b.addEventListener("click", () => { location.hash = t.id; });
+  b.addEventListener("keydown", e => {
+    const i = CONFIG.tabs.findIndex(x => x.id === t.id);
+    if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+      const n = CONFIG.tabs[(i + (e.key==="ArrowRight"?1:-1) + CONFIG.tabs.length) % CONFIG.tabs.length];
+      location.hash = n.id; $("#tab-" + n.id).focus();
+    }
+  });
+  tabsEl.appendChild(b);
+});
+function showTab(id){
+  if (!CONFIG.tabs.some(t => t.id === id)) id = "home";
+  CONFIG.tabs.forEach(t => {
+    const on = t.id === id;
+    $("#panel-" + t.id).classList.toggle("active", on);
+    const b = $("#tab-" + t.id);
+    b.setAttribute("aria-selected", on); b.tabIndex = on ? 0 : -1;
+  });
+  $("#panel-" + id).scrollTop = 0;
+}
+window.addEventListener("hashchange", () => showTab(location.hash.slice(1)));
+
+/* =====================================================================
+   Home: service cards, call button, open/closed badge
+   ===================================================================== */
+$("#callBtn").href = tel(CONFIG.phones[0]);
+CONFIG.services.forEach((s, i) => {
+  const c = document.createElement("button");
+  c.className = "card";
+  c.innerHTML = `<span class="e" aria-hidden="true">${s.icon}</span><span class="t">${s.short}</span>`;
+  c.addEventListener("click", () => { selectService(i); location.hash = "services"; });
+  $("#whatCards").appendChild(c);
+});
+
+function nowInClinic(){
+  const parts = new Intl.DateTimeFormat("en-US",{timeZone:CONFIG.timezone,weekday:"short",hour:"2-digit",minute:"2-digit",hour12:false}).formatToParts(new Date());
+  const get = t => parts.find(p => p.type === t).value;
+  const day = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].indexOf(get("weekday"));
+  return {day, mins: (Number(get("hour"))%24)*60 + Number(get("minute"))};
+}
+function updateBadge(){
+  const {day, mins} = nowInClinic();
+  const [o,c] = CONFIG.hours[day].map(t => { const [h,m]=t.split(":").map(Number); return h*60+m; });
+  const open = mins >= o && mins < c;
+  const b = $("#openBadge");
+  b.className = "badge " + (open ? "open" : "closed");
+  b.textContent = open ? `Open now · until ${fmt(CONFIG.hours[day][1])}` : `Closed now · today ${fmt(CONFIG.hours[day][0])} – ${fmt(CONFIG.hours[day][1])}`;
+  return day;
+}
+
+/* =====================================================================
+   Services sub-tabs
+   ===================================================================== */
+const sub = $("#subtabs");
+CONFIG.services.forEach((s, i) => {
+  const b = document.createElement("button");
+  b.className = "subtab"; b.role = "tab"; b.textContent = s.icon + "  " + s.title;
+  b.addEventListener("click", () => selectService(i));
+  sub.appendChild(b);
+});
+function selectService(i){
+  const s = CONFIG.services[i];
+  [...sub.children].forEach((b, j) => b.setAttribute("aria-selected", i === j));
+  $("#serviceDetail").innerHTML = `<div class="big" aria-hidden="true">${s.icon}</div><div><h3>${s.title}</h3><p style="margin-top:8px">${s.text}</p></div>`;
+}
+selectService(0);
+
+/* =====================================================================
+   Patients
+   ===================================================================== */
+CONFIG.patients.forEach(([name, cap], i) => {
+  const c = document.createElement("div"); c.className = "card pcard";
+  c.appendChild(img(`images/patient-${name.toLowerCase()}.jpg`, name, name, 90 + i*20));
+  const d = document.createElement("div"); d.innerHTML = `<strong>${name}</strong><span>${cap}</span>`;
+  c.appendChild(d); $("#patientGrid").appendChild(c);
+});
+
+/* =====================================================================
+   Gallery: filters, pagination, lightbox
+   ===================================================================== */
+const PER_PAGE = 8; let filter = "All", page = 0;
+const cats = ["All", ...new Set(CONFIG.gallery.map(g => g.cat))];
+cats.forEach(c => {
+  const b = document.createElement("button");
+  b.className = "chip"; b.textContent = c; b.setAttribute("aria-pressed", c === filter);
+  b.addEventListener("click", () => { filter = c; page = 0; renderGallery(); });
+  $("#filters").appendChild(b);
+});
+function renderGallery(){
+  [...$("#filters").children].forEach(b => b.setAttribute("aria-pressed", b.textContent === filter));
+  const list = CONFIG.gallery.filter(g => filter === "All" || g.cat === filter);
+  const pages = Math.max(1, Math.ceil(list.length / PER_PAGE));
+  page = Math.min(page, pages - 1);
+  const grid = $("#galleryGrid"); grid.innerHTML = "";
+  list.slice(page*PER_PAGE, (page+1)*PER_PAGE).forEach((g, i) => {
+    const c = document.createElement("button"); c.className = "card gitem";
+    const im = img("images/" + g.file, g.alt, g.cat, 100 + i*25);
+    c.appendChild(im);
+    c.addEventListener("click", () => { $("#lbImg").src = im.src; $("#lbImg").alt = g.alt; $("#lightbox").classList.add("on"); });
+    grid.appendChild(c);
+  });
+  $("#pgInfo").textContent = `Page ${page+1} of ${pages}`;
+  $("#prevPg").disabled = page === 0; $("#nextPg").disabled = page >= pages - 1;
+}
+$("#prevPg").onclick = () => { page--; renderGallery(); };
+$("#nextPg").onclick = () => { page++; renderGallery(); };
+const closeLb = () => $("#lightbox").classList.remove("on");
+$("#lightbox").addEventListener("click", closeLb);
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeLb(); });
+$("#fbLink").href = CONFIG.facebook; $("#igLink").href = CONFIG.instagram;
+renderGallery();
+
+/* =====================================================================
+   Contact
+   ===================================================================== */
+$("#addr").innerHTML = `<strong>${CONFIG.name}</strong><br>${CONFIG.address}`;
+const btns = $("#contactBtns");
+CONFIG.phones.forEach(p => btns.insertAdjacentHTML("beforeend", `<a class="btn btn-primary" href="${tel(p)}">📞 ${p}</a>`));
+btns.insertAdjacentHTML("beforeend", `<a class="btn btn-green" target="_blank" rel="noopener" href="https://wa.me/${CONFIG.whatsapp}">💬 WhatsApp</a>`);
+const q = encodeURIComponent(CONFIG.name + ", " + CONFIG.address);
+$("#map").src = `https://maps.google.com/maps?q=${q}&output=embed`;
+btns.insertAdjacentHTML("beforeend", `<a class="btn btn-green" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=${q}">🧭 Get Directions</a>`);
+function renderHours(today){
+  const order = [1,2,3,4,5,6,0];
+  $("#hoursTable").innerHTML = order.map(d =>
+    `<tr class="${d===today?'today':''}"><td>${DAYS[d]}</td><td>${fmt(CONFIG.hours[d][0])} – ${fmt(CONFIG.hours[d][1])}</td></tr>`).join("");
+}
+
+/* =====================================================================
+   JSON-LD structured data
+   ===================================================================== */
+(function(){
+  const map = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  const ld = {
+    "@context":"https://schema.org", "@type":["VeterinaryCare","LocalBusiness"],
+    name:CONFIG.name, telephone:CONFIG.phones,
+    address:{"@type":"PostalAddress", streetAddress:"Opposite Peninsular Honda, Near Matha School, Thumboly",
+      addressLocality:"Alappuzha", addressRegion:"Kerala", postalCode:"688008", addressCountry:"IN"},
+    openingHoursSpecification:Object.entries(CONFIG.hours).map(([d,[o,c]]) =>
+      ({"@type":"OpeningHoursSpecification", dayOfWeek:map[d], opens:o, closes:c}))
+  };
+  const s = document.createElement("script"); s.type = "application/ld+json";
+  s.textContent = JSON.stringify(ld); document.head.appendChild(s);
+})();
+
+/* =====================================================================
+   Init
+   ===================================================================== */
+const today = updateBadge(); renderHours(today);
+setInterval(() => { const d = updateBadge(); renderHours(d); }, 60000);
+showTab(location.hash.slice(1) || "home");
+</script>
+</body>
+</html>
